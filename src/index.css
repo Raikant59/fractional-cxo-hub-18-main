@@ -179,6 +179,13 @@
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
+  .bg-card-50 {
+    background-color: hsl(var(--card) / 0.5);
+  }
+
+  .border-border-50 {
+    border-color: hsl(var(--border) / 0.5);
+  }
 }
 
 @keyframes fadeIn {
