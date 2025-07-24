@@ -1,13 +1,15 @@
-
 import { useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Play, CheckCircle, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 const Hero = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,83 +24,120 @@ const Hero = () => {
       { threshold: 0.1 }
     );
 
-    if (titleRef.current) observer.observe(titleRef.current);
-    if (subtitleRef.current) observer.observe(subtitleRef.current);
-    if (ctaRef.current) observer.observe(ctaRef.current);
-    if (imageRef.current) observer.observe(imageRef.current);
+    [titleRef, subtitleRef, ctaRef, statsRef].forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
 
-    return () => {
-      if (titleRef.current) observer.unobserve(titleRef.current);
-      if (subtitleRef.current) observer.unobserve(subtitleRef.current);
-      if (ctaRef.current) observer.unobserve(ctaRef.current);
-      if (imageRef.current) observer.unobserve(imageRef.current);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="relative pt-32 pb-32 md:pt-48 md:pb-40 overflow-hidden bg-gradient-to-br from-background to-secondary/30">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Gentle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-accent/10"></div>
+    <section 
+      ref={heroRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-accent/5"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Gradient orbs */}
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-600/20 blur-3xl animate-float"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-600/20 blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         
-        {/* Minimal floating elements */}
-        <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-accent-blue/5 opacity-40 blur-3xl"></div>
-        <div className="absolute top-1/4 -left-24 w-72 h-72 rounded-full bg-accent-purple/5 opacity-30 blur-3xl"></div>
-        
-        {/* Subtle grid pattern */}
+        {/* Grid pattern */}
         <div className="absolute inset-0 opacity-[0.02]" style={{ 
-          backgroundImage: 'radial-gradient(circle at 25px 25px, hsl(var(--primary)) 1px, transparent 0)', 
+          backgroundImage: 'radial-gradient(circle at 25px 25px, hsl(var(--foreground)) 1px, transparent 0)', 
           backgroundSize: '50px 50px' 
         }}></div>
-        
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto container-padding relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Hero Text Content */}
-          <div className="space-y-8 md:space-y-12">
-            <h1 
-              ref={titleRef}
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold leading-tight md:leading-tight lg:leading-tight opacity-0 text-foreground"
-              style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
-            >
-              Fractional CXO talent <span className="text-accent-blue">when you need it</span>
-            </h1>
-            
-            <p 
-              ref={subtitleRef}
-              className="text-xl md:text-2xl xl:text-3xl text-muted-foreground opacity-0 leading-relaxed max-w-4xl mx-auto"
-              style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}
-            >
-              Connect with pre-vetted C-suite executives for fractional, interim, and project-based leadership. Scale your executive team without the full-time commitment.
-            </p>
-            
-            <div 
-              ref={ctaRef}
-              className="flex flex-col sm:flex-row gap-6 pt-4 opacity-0 justify-center"
-              style={{ animationDelay: '0.45s', animationFillMode: 'forwards' }}
-            >
-              <Link 
-                to="/executives" 
-                className="inline-flex items-center justify-center px-10 py-5 rounded-2xl text-primary-foreground font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl text-lg"
-                style={{ background: 'var(--gradient-primary)' }}
-              >
+          {/* Trust Badge */}
+          <div className="mb-8 opacity-0" ref={statsRef} style={{ animationDelay: '0.1s' }}>
+            <Badge variant="secondary" className="px-4 py-2 rounded-full border border-border/50 bg-card/50 backdrop-blur-sm">
+              <div className="flex items-center space-x-2">
+                <div className="flex -space-x-1">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <span className="text-sm font-medium">Trusted by 500+ companies</span>
+              </div>
+            </Badge>
+          </div>
+
+          {/* Main Headline */}
+          <h1 
+            ref={titleRef}
+            className="text-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 opacity-0 text-balance"
+            style={{ animationDelay: '0.2s' }}
+          >
+            Fractional CXO talent{' '}
+            <span className="gradient-text">when you need it</span>
+          </h1>
+          
+          {/* Subtitle */}
+          <p 
+            ref={subtitleRef}
+            className="text-body text-xl md:text-2xl text-muted-foreground mb-12 opacity-0 max-w-3xl mx-auto text-balance leading-relaxed"
+            style={{ animationDelay: '0.4s' }}
+          >
+            Connect with pre-vetted C-suite executives for fractional, interim, and project-based leadership. 
+            Scale your executive team without the full-time commitment.
+          </p>
+          
+          {/* CTA Buttons */}
+          <div 
+            ref={ctaRef}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-16 opacity-0"
+            style={{ animationDelay: '0.6s' }}
+          >
+            <Button asChild size="lg" className="btn-primary text-lg px-8 py-4 h-auto group">
+              <Link to="/executives">
                 Find Your CXO
-                <ArrowRight className="ml-3 h-6 w-6" />
+                <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
-              
-              <Link 
-                to="/how-it-works" 
-                className="inline-flex items-center justify-center px-10 py-5 rounded-2xl bg-card border border-border text-foreground font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg text-lg hover:bg-accent"
-              >
+            </Button>
+            
+            <Button asChild variant="outline" size="lg" className="btn-secondary text-lg px-8 py-4 h-auto group">
+              <Link to="/how-it-works">
+                <Play className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
                 How It Works
               </Link>
+            </Button>
+          </div>
+
+          {/* Social Proof Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto opacity-0" ref={statsRef} style={{ animationDelay: '0.8s' }}>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">500+</div>
+              <div className="text-sm text-muted-foreground">Vetted Executives</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">48hrs</div>
+              <div className="text-sm text-muted-foreground">Average Match Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">95%</div>
+              <div className="text-sm text-muted-foreground">Success Rate</div>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 opacity-0" style={{ animationDelay: '1s' }}>
+            <p className="text-sm text-muted-foreground mb-6">Trusted by leading companies</p>
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+              {['Stripe', 'Linear', 'Framer', 'Notion', 'Figma', 'Vercel'].map((company, index) => (
+                <div key={index} className="text-lg font-semibold text-muted-foreground hover:text-foreground transition-colors">
+                  {company}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
     </section>
   );
 };
