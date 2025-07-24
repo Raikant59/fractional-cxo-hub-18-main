@@ -9,7 +9,7 @@ const stats = [
 
 export const Stats: React.FC = () => {
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-r from-background via-secondary/30 to-accent/20">
+    <section className="py-12 md:py-16 bg-gradient-to-r from-background via-secondary/30 to-accent/20 rounded-2xl shadow-soft font-sans">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, index) => (

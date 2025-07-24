@@ -20,8 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['SF Pro Display', 'system-ui', 'sans-serif'],
-				display: ['SF Pro Display', 'system-ui', 'sans-serif'],
+				sans: ['Inter', 'Poppins', 'system-ui', 'sans-serif'],
+				display: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -48,8 +48,10 @@ export default {
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))',
-					blue: 'hsl(var(--accent-blue))',
-					purple: 'hsl(var(--accent-purple))'
+					teal: '#14b8a6',
+					tealLight: '#99f6e4',
+					gray: '#64748b',
+					grayLight: '#f1f5f9',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -63,9 +65,14 @@ export default {
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: '1.25rem',
+				md: '1rem',
+				sm: '0.75rem'
+			},
+			boxShadow: {
+				soft: '0 4px 24px rgba(20, 184, 166, 0.08)',
+				medium: '0 8px 32px rgba(20, 184, 166, 0.12)',
+				strong: '0 16px 64px rgba(20, 184, 166, 0.16)',
 			},
 			keyframes: {
 				'accordion-down': {

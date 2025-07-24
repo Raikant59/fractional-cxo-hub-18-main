@@ -1,14 +1,14 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-primary text-white pt-16 pb-6">
+    <footer className="bg-gradient-to-t from-secondary via-[#23232A] to-[#18181B] text-foreground pt-16 pb-6 rounded-t-2xl shadow-soft font-sans border-t border-border">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 mb-12">
+          {/* Logo and Description Section - Spans 6 columns */}
+          <div className="md:col-span-6">
             <div className="mb-6">
               <Link to="/" className="inline-block">
                 <span className="font-display text-xl font-semibold tracking-tight">Fractional</span>
@@ -18,35 +18,22 @@ const Footer: React.FC = () => {
             <p className="text-white/70 mb-6 max-w-xs">
               Connecting businesses with exceptional C-suite talent for fractional, interim, and project-based leadership.
             </p>
-            <div className="flex space-x-4">
-              {['Twitter', 'LinkedIn', 'Facebook'].map((social, index) => (
-                <a 
-                  key={index}
-                  href="#"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  {social}
-                </a>
-              ))}
-            </div>
           </div>
 
-          <div>
-            <h3 className="font-medium text-lg mb-4">For Businesses</h3>
-            <ul className="space-y-3">
+          {/* Navigation Sections - Each spans 3 columns */}
+          <div className="md:col-span-3">
+            <h3 className="font-medium text-lg mb-6">For Businesses</h3>
+            <ul className="space-y-4">
               {[
                 { label: 'How It Works', path: '/#how-it-works' },
                 { label: 'Find Executives', path: '/executives' },
-                { label: 'Our Process', path: '/#process' },
-                { label: 'Success Stories', path: '/#case-studies' },
-                { label: 'Pricing', path: '/#pricing' },
               ].map((item, index) => (
                 <li key={index}>
                   <a 
                     href={item.path} 
                     className="text-white/70 hover:text-white transition-colors flex items-center"
                   >
-                    <ChevronRight className="h-3 w-3 mr-1" />
+                    <ChevronRight className="h-3 w-3 mr-2" />
                     {item.label}
                   </a>
                 </li>
@@ -54,45 +41,19 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-medium text-lg mb-4">For Executives</h3>
-            <ul className="space-y-3">
-              {[
-                { label: 'Join Our Network', path: '/#join' },
-                { label: 'Application Process', path: '/#apply' },
-                { label: 'Executive Resources', path: '/#resources' },
-                { label: 'Success Stories', path: '/#testimonials' },
-                { label: 'FAQ', path: '/#faq' },
-              ].map((item, index) => (
-                <li key={index}>
-                  <a 
-                    href={item.path} 
-                    className="text-white/70 hover:text-white transition-colors flex items-center"
-                  >
-                    <ChevronRight className="h-3 w-3 mr-1" />
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-medium text-lg mb-4">Contact</h3>
-            <ul className="space-y-3">
+          <div className="md:col-span-3">
+            <h3 className="font-medium text-lg mb-6">Contact</h3>
+            <ul className="space-y-4">
               {[
                 { label: 'Contact Us', path: '/#contact' },
-                { label: 'Support', path: '/#support' },
-                { label: 'Schedule a Call', path: '/#schedule' },
-                { label: 'Privacy Policy', path: '/privacy' },
-                { label: 'Terms of Service', path: '/terms' },
+                { label: 'Schedule a Call', path: '/#request' },
               ].map((item, index) => (
                 <li key={index}>
                   <a 
                     href={item.path} 
                     className="text-white/70 hover:text-white transition-colors flex items-center"
                   >
-                    <ChevronRight className="h-3 w-3 mr-1" />
+                    <ChevronRight className="h-3 w-3 mr-2" />
                     {item.label}
                   </a>
                 </li>

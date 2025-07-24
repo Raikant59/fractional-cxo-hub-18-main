@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Search, Filter, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -133,10 +133,15 @@ const SearchSection: React.FC = () => {
                 Search Executives
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-              
               <Button
                 variant="outline"
                 className="flex-1 h-11"
+                onClick={() => {
+                  const requestSection = document.getElementById('request');
+                  if (requestSection) {
+                    requestSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Request Custom Match
               </Button>

@@ -52,7 +52,7 @@ const RequestForm: React.FC = () => {
   };
 
   return (
-    <section id="request" className="py-20 md:py-28 bg-gradient-to-br from-secondary/30 via-accent/20 to-background">
+    <section id="request" className="py-20 md:py-28 bg-gradient-to-br from-secondary/30 via-accent/20 to-background rounded-2xl shadow-soft font-sans">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">

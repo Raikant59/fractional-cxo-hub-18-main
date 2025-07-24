@@ -53,11 +53,11 @@ const benefits = [
 
 const HowItWorks = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col font-sans">
       <NavBar />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-24 flex flex-col gap-8 px-2 md:px-0">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-r from-primary/5 via-accent/5 to-secondary/10">
+        <section className="py-16 bg-gradient-to-r from-primary/5 via-accent/5 to-secondary/10 rounded-2xl shadow-soft">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">

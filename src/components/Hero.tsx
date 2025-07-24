@@ -36,7 +36,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-32 md:pt-48 md:pb-40 overflow-hidden bg-gradient-to-br from-background to-secondary/30">
+    <section className="relative pt-32 pb-32 md:pt-48 md:pb-40 overflow-hidden bg-gradient-to-br from-background to-accent/30 rounded-2xl shadow-soft font-sans">
       {/* Subtle Background Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {/* Gentle gradient overlay */}

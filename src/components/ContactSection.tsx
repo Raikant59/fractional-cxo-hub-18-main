@@ -189,19 +189,11 @@ const ContactSection: React.FC = () => {
                 </div>
               </div>
               
+              {/* Remove the 'Follow Us' section and add a quote */}
               <div className="mt-10">
-                <h4 className="text-sm font-medium mb-3">Follow Us</h4>
-                <div className="flex space-x-4">
-                  {['Twitter', 'LinkedIn', 'Facebook'].map((social, index) => (
-                    <a 
-                      key={index}
-                      href="#"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {social}
-                    </a>
-                  ))}
-                </div>
+                <blockquote className="italic text-lg text-muted-foreground border-l-4 border-primary pl-4">
+                  “Empowering your business with world-class executive leadership, on demand.”
+                </blockquote>
               </div>
             </div>
           </div>

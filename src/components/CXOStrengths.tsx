@@ -30,7 +30,7 @@ const strengths = [
 
 export const CXOStrengths: React.FC = () => {
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+    <section className="py-16 md:py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5 rounded-2xl shadow-soft font-sans">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
